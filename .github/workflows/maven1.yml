@@ -29,5 +29,9 @@ jobs:
       run: mvn compile
     - name: Test with Maven
       run: mvn test
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+    - name: Install with Maven
+      run: mvn install
+    - uses: actions/upload-artifact@v4
+      with:
+        name: my-artifact
+        path: target
