@@ -1,11 +1,19 @@
+# Use an official OpenJDK image
 FROM adoptopenjdk/openjdk11
-  
-EXPOSE 8080
- 
-ENV APP_HOME /usr/src/app
 
-COPY target/*.jar $APP_HOME/app.jar
-
+# Set application directory
+ENV APP_HOME=/usr/src/app
 WORKDIR $APP_HOME
 
+# Ensure the target directory exists before copying
+RUN mkdir -p $APP_HOME
+
+# Copy the JAR file from the correct location
+COPY target/*.jar $APP_HOME/app.jar
+
+# Expose the application port
+EXPOSE 8080
+
+# Run the application
 CMD ["java", "-jar", "app.jar"]
+
