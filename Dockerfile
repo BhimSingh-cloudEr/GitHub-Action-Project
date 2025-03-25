@@ -2,7 +2,7 @@
 FROM adoptopenjdk/openjdk11
 
 # Set application directory
-ENV APP_HOME /usr/src/app
+ENV "APP_HOME=/usr/src/app"
 WORKDIR $APP_HOME
 
 # Ensure the target directory exists before copying
